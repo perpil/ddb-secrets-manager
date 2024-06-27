@@ -1,6 +1,6 @@
 # Using DynamoDB as a Serverless Secrets Manager
 
-This is the companion repo to this [blog post]().
+This is the companion repo to this [blog post](https://speedrun.nobackspacecrew.com/blog/2024/06/27/using-dynamodb-as-a-secrets-manager.html).
 
 ## Code notes
 The [CDK stack](lib/dirtySecretsStack.ts) creates a Dynamo Table with a table resource policy that denies reading the items unless the principal arn matches the leading key on the table.  The table has the following schema:
@@ -17,12 +17,16 @@ The [lambda function](src/handler.mjs) attempts to read the secret from the tabl
 
 For convenience the stack emits a function url to easily test the lambda function from your browser.
 
+
 ## Deploying the stack
-`npm install`
-`npx cdk deploy`
+```
+npm install
+npx cdk bootstrap # Only if you've never used the CDK before
+npx cdk deploy
+```
 
 ## Writing a secret
-Log into the console to the same account you deployed the stack with a principal that has permissions to write to dynamodb.  Navigate to the url listed under `DirtySecretsStack.DDBCreateItemUrl` in the stack outputs.
+Log into the console to the same account you deployed the stack with a principal that has permissions to write to dynamodb.  Navigate to the console url listed under `DirtySecretsStack.DDBCreateItemUrl` in the stack outputs.
 
 1. Set `partition` to the value found in stack outputs called: `DirtySecretsStack.FunctionPrincipal`.
 2. Set `name` to `secret`.
