@@ -7,9 +7,9 @@ The [CDK stack](lib/dirtySecretsStack.ts) creates a Dynamo Table with a table re
 
 | Partition Key (principal) | Sort Key (name) | Value (value)
 | --- | --- | --- |
-|arn:aws:iam::111111111111:role/function-name-1-lambda-role|secret-name-1|secret-value-1|
-|arn:aws:iam::111111111111:role/function-name-2-lambda-role|secret-name-1|secret-value-1|
-|arn:aws:iam::111111111111:role/function-name-2-lambda-role|secret-name-2|secret-value-2|
+|arn:aws:iam::111111111111:role/github-webhook-processor-lambda-role|githubAppSecret|ghsecret-value|
+|arn:aws:iam::111111111111:role/slack-bot-lambda-role|webhookUrl|https://hooks.slack.com/services/...|
+|arn:aws:iam::111111111111:role/slack-bot-lambda-role|slackWebhookSecret|slackSecret|
 
 This means, only the lambda with function-name-1 can read secret-name-1 under the principal arn:aws:iam::111111111111:role/function-name-1-lambda-role.  Only the lambda with function-name-2 can read secret-name-1 and secret-name-2 under the principal arn:aws:iam::111111111111:role/function-name-2-lambda-role.
 
