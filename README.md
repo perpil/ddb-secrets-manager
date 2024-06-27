@@ -11,7 +11,7 @@ The [CDK stack](lib/dirtySecretsStack.ts) creates a Dynamo Table with a table re
 |arn:aws:iam::111111111111:role/slack-bot-lambda-role|webhookUrl|https://hooks.slack.com/services/...|
 |arn:aws:iam::111111111111:role/slack-bot-lambda-role|slackWebhookSecret|slackSecret|
 
-This means, only the lambda with function-name-1 can read secret-name-1 under the principal arn:aws:iam::111111111111:role/function-name-1-lambda-role.  Only the lambda with function-name-2 can read secret-name-1 and secret-name-2 under the principal arn:aws:iam::111111111111:role/function-name-2-lambda-role.
+This means, only the lambda with `function-name-1` can read `secret-name-1` under the principal `arn:aws:iam::111111111111:role/function-name-1-lambda-role`.  Only the lambda with `function-name-2` can read `secret-name-1` and `secret-name-2` under the principal `arn:aws:iam::111111111111:role/function-name-2-lambda-role`.
 
 The [lambda function](src/handler.mjs) attempts to read the secret from the table and returns a json object indicating whether the secret was successfully read or not.  
 
